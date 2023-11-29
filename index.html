@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagination</title>
+    <link rel="stylesheet" href="src/style.css">
 
 </head>
 <body>
@@ -11,11 +12,43 @@
 
     <h2>Comments</h2>
 
-    <div class="comments"></div>
+    <div class="comments">
+        <div class="pageData"></div>
+
+        <div class="pagination">
+			<span class="page-btn page-step" data-shown="1">&laquo;</span>
+			<!-- Previous -->
+
+			
+            <div class="pageBtns">
+                <!-- <a href="#page-1" id="page-1" class="page-btn">1</a> -->
+            </div>
+			
+			<!-- Page numbers -->
+			<span class="page-btn page-step" data-shown="5">&raquo;</span>
+			<!-- Next -->
+		</div>
+    </div>
 
     <h2>Posts</h2>
 
-    <div class="post"></div>
+    <div class="post">
+        <div class="pageData"></div>
+
+        <div class="pagination">
+			<span class="page-btn page-step" data-direction="prev">&laquo;</span>
+			<!-- Previous -->
+
+			
+            <div class="pageBtns">
+                <!-- <a href="#page-1" id="page-1" class="page-btn">1</a> -->
+            </div>
+			
+			<!-- Page numbers -->
+			<span class="page-btn page-step" data-direction="next">&raquo;</span>
+			<!-- Next -->
+		</div>
+    </div>
 
     <script src="src/script.js"></script>
 </body>

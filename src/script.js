@@ -78,18 +78,23 @@ class Pagination {
 
         
         this.htmlPlace = document.querySelector(placeSelector);
+        
+        console.log(this.htmlPlace);
         this.htmlPageBtns = this.htmlPlace.querySelector('.pageBtns');
         console.log(this.htmlPageBtns);
 
         this.HTMLRoot = this.htmlPlace.querySelector('.pageData');
+        console.log(this.HTMLRoot);
         this.HTMLPagination = this.htmlPlace.querySelector('.pagination');
         this.HTMLPagination.addEventListener('click', (event) => {
             // TODO: дз - узнать, как считать информацию об элеметы на который мы кликнули
             const elemText = event.target.textContent;
-            const pageNumber = Number(elemText);
-            console.log(pageNumber); 
+            this.currentPage = Number(elemText);
+            console.log(this.currentPage); 
 
-            const  pageDataArray = this.getPageData(pageNumber);
+            this.printPageButtons();
+
+            const pageDataArray = this.getPageData(this.currentPage);
             this.printData(pageDataArray);
 
 
@@ -164,7 +169,7 @@ class Pagination {
     // Выводит на страницу кнопки пагинации (5 кнопок: та кнопка, на которой мы находимся (текущая) + по 2 кнопки слева и справа от нее)
     // создать html элемент (кнопку)
     printPageButtons() {
-
+        this.htmlPageBtns.textContent = "";
         console.log(this.currentPage); 
         // 1 2 (3) 4 5
         // 3 - 1
@@ -181,7 +186,8 @@ class Pagination {
         const realStart = START < 1 ? 1 : START;
 
         const END = (this.currentPage + this.PAGE_NEIGHBORS_AMOUNT);
-        const realEnd = END > this.pagesAmount ? this.pagesAmount : END;
+        let realEnd = END > this.pagesAmount ? this.pagesAmount : END;
+        // realEnd = realEnd < 5 ? 5 : realEnd;
 
         
         for (let index = realStart; index <= realEnd; index++) {
@@ -200,6 +206,14 @@ class Pagination {
 
 
 }
+
+
+const paginationConfig = {
+    url: 'https://jsonplaceholder.typicode.com/comments',
+    PAGE_NEIGHBORS_AMOUNT: 2,
+    startPage: 2,
+    htmlRootSelector: ".comments",
+};
 
 new Pagination('https://jsonplaceholder.typicode.com/comments', ".comments");
 new Pagination('https://jsonplaceholder.typicode.com/posts', ".post");
