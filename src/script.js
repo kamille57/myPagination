@@ -87,7 +87,6 @@ class Pagination {
         console.log(this.HTMLRoot);
         this.HTMLPagination = this.htmlPlace.querySelector('.pagination');
         this.HTMLPagination.addEventListener('click', (event) => {
-            // TODO: дз - узнать, как считать информацию об элеметы на который мы кликнули
             const elemText = event.target.textContent;
             this.currentPage = Number(elemText);
             console.log(this.currentPage); 
@@ -112,8 +111,6 @@ class Pagination {
         // this.data = [...data];
         this.length = this.data.length; // сохраяем в this длинну массива
         this.pagesAmount = this.getAllPagesLength()
-
-        // TODO: продолжить отсюда
         this.printPageButtons();
 
         console.log(this);
@@ -216,6 +213,8 @@ const paginationConfig = {
 };
 
 new Pagination('https://jsonplaceholder.typicode.com/comments', ".comments");
+// TODO: продолжиаем отсюда
+// new Pagination(paginationConfig);
 new Pagination('https://jsonplaceholder.typicode.com/posts', ".post");
 
 // Разделяй и властвуй
